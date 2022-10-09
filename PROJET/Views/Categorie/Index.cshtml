@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PROJET.Models.Categorie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br/><br/>
+<table>
+    <tr>
+       <td>
+           <h1>Notre Listes des Categories</h1> 
+        </td>
+        <td>
+            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+        </td>
+        <td>
+          <a asp-controller="SousCategorie" asp-action="Index" style="color:black"><h2>Notre Listes des SCategories</h2></a>
+        </td>
+    </tr>
+</table>
+
+<p>
+    <a asp-action="Create">Ajouter un nouveau categorie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategorieName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategorieName)
+            </td>
+            <td>
+              <button class="btn btn-secondary   btn-lg"> <a class="text-white" asp-action="Edit" asp-route-id="@item.CategorieID">Modifier</a> </button>
+                <button class="btn btn-secondary btn-lg">   <a class="text-white" asp-action="Details" asp-route-id="@item.CategorieID">Détails</a>  </button>
+                <button class="btn btn-secondary  btn-lg">   <a  class="text-white" asp-action="Delete" asp-route-id="@item.CategorieID">Supprimer</a>  </button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

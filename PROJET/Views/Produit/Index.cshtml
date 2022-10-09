@@ -1,0 +1,73 @@
+﻿@model IEnumerable<PROJET.Models.Produit>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br/><br/>
+<h1> Notre Liste des Produits </h1>
+
+<p>
+    <a asp-action="Create">Ajouter un nouveau produit</a>
+</p>
+<div class="container-fluid">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProduitName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProduitCouleur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProduitPrix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProduitQteStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SousCategorieP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategorieP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FournisseurP)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProduitName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProduitCouleur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProduitPrix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProduitQteStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SousCategorieP.SousCategorieID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategorieP.CategorieID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FournisseurP.FournisseurID)
+            </td>
+            <td>
+                   <button class="btn btn-secondary   btn-lg"> <a class="text-white"  asp-action="Edit" asp-route-id="@item.ProduitID">Modifier</a> </button>
+                   <button class="btn btn-secondary   btn-lg"> <a class="text-white"  asp-action="Details" asp-route-id="@item.ProduitID">Détails</a></button> 
+                  <button class="btn btn-secondary   btn-lg"> <a class="text-white"  asp-action="Delete" asp-route-id="@item.ProduitID">Supprimer</a></button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
